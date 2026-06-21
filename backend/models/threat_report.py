@@ -14,8 +14,7 @@ from __future__ import annotations
 import uuid
 from enum import Enum as PyEnum
 
-from sqlalchemy import Boolean, DateTime, Enum, Float, ForeignKey, String, Text, func
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Boolean, DateTime, Enum, Float, ForeignKey, String, Text, func, Uuid as UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from backend.models.database import Base

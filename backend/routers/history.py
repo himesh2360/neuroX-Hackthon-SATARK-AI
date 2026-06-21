@@ -68,8 +68,17 @@ async def get_report(
     db: AsyncSession = Depends(get_db),
     user: User = Depends(get_current_user),
 ) -> dict:
+    import uuid
+    try:
+        scan_uuid = uuid.UUID(scan_id)
+    except ValueError:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid scan UUID format.",
+        )
+
     result = await db.execute(
-        select(Scan).where(Scan.id == scan_id, Scan.user_id == user.id)
+        select(Scan).where(Scan.id == scan_uuid, Scan.user_id == user.id)
     )
     scan = result.scalars().first()
     if not scan:

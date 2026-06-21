@@ -15,9 +15,8 @@ from enum import Enum as PyEnum
 
 from sqlalchemy import (
     CheckConstraint, DateTime, Enum, Float, ForeignKey,
-    Integer, String, Text, func,
+    Integer, String, Text, func, JSON, Uuid as UUID,
 )
-from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from backend.models.database import Base
@@ -76,7 +75,7 @@ class Scan(Base):
 
     # ── Explainability ────────────────────────────────────────────────────────
     # [ {"feature": "str", "value": float}, … ]
-    shap_features: Mapped[list | None] = mapped_column(JSONB, nullable=True)
+    shap_features: Mapped[list | None] = mapped_column(JSON, nullable=True)
 
     # ── LLM explanation ───────────────────────────────────────────────────────
     explanation:    Mapped[str | None] = mapped_column(Text, nullable=True)
@@ -84,7 +83,7 @@ class Scan(Base):
 
     # ── URL analysis sub-results ──────────────────────────────────────────────
     # { final_url, redirect_chain, hop_count, whois_info, is_phishtank_hit, … }
-    url_analysis: Mapped[dict | None] = mapped_column(JSONB, nullable=True)
+    url_analysis: Mapped[dict | None] = mapped_column(JSON, nullable=True)
 
     # ── OCR metadata (for image scans) ────────────────────────────────────────
     ocr_text:       Mapped[str | None]   = mapped_column(Text, nullable=True)

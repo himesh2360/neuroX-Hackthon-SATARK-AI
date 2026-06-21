@@ -27,7 +27,13 @@ async def get_current_user(
     except Exception:
         raise credentials_exception
 
-    result = await db.execute(select(User).where(User.id == payload.sub))
+    import uuid
+    try:
+        user_uuid = uuid.UUID(payload.sub)
+    except (ValueError, AttributeError):
+        raise credentials_exception
+
+    result = await db.execute(select(User).where(User.id == user_uuid))
     user = result.scalars().first()
     if user is None:
         raise credentials_exception

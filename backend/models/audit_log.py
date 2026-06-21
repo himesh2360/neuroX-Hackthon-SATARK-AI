@@ -18,8 +18,7 @@ from __future__ import annotations
 
 import uuid
 
-from sqlalchemy import DateTime, ForeignKey, Index, String, Text, func
-from sqlalchemy.dialects.postgresql import INET, UUID
+from sqlalchemy import DateTime, ForeignKey, Index, String, Text, func, Uuid as UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from backend.models.database import Base

@@ -248,6 +248,24 @@ export default function LoginPage() {
 
         <div className="flex items-center gap-4">
           <button
+            onClick={handleDemoSignIn}
+            className="flex items-center gap-2 transition-all duration-200"
+            style={{
+              background: 'rgba(223,255,0,0.08)',
+              border: '1px solid rgba(223,255,0,0.3)',
+              borderRadius: 12,
+              padding: '0.5rem 1.25rem',
+              fontSize: 13,
+              fontWeight: 600,
+              cursor: 'pointer',
+              color: '#DFFF00',
+            }}
+            onMouseEnter={e => (e.currentTarget.style.background = 'rgba(223,255,0,0.15)')}
+            onMouseLeave={e => (e.currentTarget.style.background = 'rgba(223,255,0,0.08)')}
+          >
+            👤 Demo Sign in
+          </button>
+          <button
             onClick={handleGoogleSignIn}
             className="hidden sm:flex items-center gap-2 transition-all duration-200"
             style={{
@@ -264,7 +282,7 @@ export default function LoginPage() {
             onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)')}
           >
             <GoogleIcon size={16} />
-            Sign in
+            Google Sign in
           </button>
         </div>
       </nav>
@@ -355,6 +373,24 @@ export default function LoginPage() {
           >
             <GoogleIcon size={18} />
             Sign in with Google
+          </button>
+          <button
+            id="hero-demo-signin-btn"
+            onClick={handleDemoSignIn}
+            className="flex items-center justify-center gap-3 transition-all duration-200"
+            style={{
+              padding: '0.875rem 1.5rem',
+              fontSize: 14,
+              fontWeight: 600,
+              cursor: 'pointer',
+              minWidth: 260,
+              borderRadius: 0,
+              border: '1px solid rgba(255,255,255,0.2)',
+              background: 'transparent',
+              color: '#fff',
+            }}
+          >
+            👤 Sign in with Demo Account
           </button>
         </div>
 
@@ -540,6 +576,22 @@ export default function LoginPage() {
             >
               <GoogleIcon size={18} />
               Continue with Google
+            </button>
+            <button
+              onClick={handleDemoSignIn}
+              className="transition-all duration-200 flex items-center justify-center gap-3"
+              style={{ 
+                fontSize: 14, 
+                padding: '0.8rem 1.5rem', 
+                cursor: 'pointer',
+                minWidth: 240,
+                borderRadius: 0,
+                border: '1px solid rgba(255,255,255,0.2)',
+                background: 'transparent',
+                color: '#fff',
+              }}
+            >
+              👤 Use Demo Account
             </button>
           </div>
         </div>

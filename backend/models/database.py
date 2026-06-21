@@ -25,13 +25,19 @@ from backend.config import get_settings
 settings = get_settings()
 
 # ── Engine ────────────────────────────────────────────────────────────────────
+engine_kwargs = {
+    "echo": settings.DEBUG,
+    "pool_pre_ping": True,
+}
+if not settings.DATABASE_URL.startswith("sqlite"):
+    engine_kwargs.update({
+        "pool_size": 10,
+        "max_overflow": 20,
+        "pool_recycle": 3600,   # recycle connections after 1 h
+    })
 engine = create_async_engine(
     settings.DATABASE_URL,
-    echo=settings.DEBUG,
-    pool_pre_ping=True,
-    pool_size=10,
-    max_overflow=20,
-    pool_recycle=3600,   # recycle connections after 1 h
+    **engine_kwargs
 )
 
 # ── Session factory ───────────────────────────────────────────────────────────

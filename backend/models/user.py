@@ -7,8 +7,7 @@ from __future__ import annotations
 import uuid
 from enum import Enum as PyEnum
 
-from sqlalchemy import Boolean, DateTime, Enum, String, func
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Boolean, DateTime, Enum, String, func, Uuid as UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from backend.models.database import Base

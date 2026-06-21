@@ -20,8 +20,7 @@ from __future__ import annotations
 import uuid
 from datetime import datetime
 
-from sqlalchemy import DateTime, ForeignKey, String, Text
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import DateTime, ForeignKey, String, Text, Uuid as UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from backend.models.database import Base
